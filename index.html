@@ -5,44 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Default dark mode */
+            color: white;
+            display: flex;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .sidebar {
+            width: 250px;
+            background: #1c1c1c;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        .sidebar h2 {
+            color: #007BFF; /* Blue color */
+            display: none; /* Atlas heading removed */
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .sidebar ul li a:hover {
+            color: #007BFF; /* Blue color */
+        }
+        .main-content {
+            margin-left: 270px;
+            padding: 50px;
+            width: calc(100% - 270px);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1c1c1c;
+            padding: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #fff;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #2c2c2c;
+            border-left: 5px solid #007BFF; /* Blue color */
+            border-radius: 5px;
+        }
+        .social-links {
+            margin: 20px 0;
+        }
+        .social-links a {
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .social-links a img {
+            width: 40px;
+            height: 40px;
+        }
+        .skills, .projects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
+        .skills li, .projects div {
+            list-style: none;
+            background: #007BFF; /* Blue color */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skills li:hover, .projects div:hover {
+            transform: scale(1.1);
+            background: white;
+            color: #007BFF; /* Blue color */
+        }
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #007BFF;
+        }
+        /* Skills with logos */
+        .skills li img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        /* Projects section buttons */
+        .projects div {
+            background: #4CAF50; /* Green color */
+            cursor: pointer;
+        }
+        .projects div:hover {
+            background: #388E3C; /* Dark green */
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: #0056b3;
+        }
+
+        /* Light Mode styles */
+        .light-mode {
+            background-color: #ffffff;
+            color: #121212;
+        }
+
+        .light-mode .container {
+            background: #f9f9f9;
+            color: #121212;
+        }
+
+        .light-mode .sidebar {
+            background: #f1f1f1;
+            color: #121212;
+        }
+
+        .light-mode .sidebar ul li a {
+            color: #121212;
+        }
+
+        .light-mode .sidebar ul li a:hover {
+            color: #007BFF;
+        }
+
+        .light-mode .skills li, .light-mode .projects div {
+            background: #007BFF;
+            color: white;
+        }
+
+        .light-mode .skills li:hover, .light-mode .projects div:hover {
+            background: white;
+            color: #007BFF;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Harsh Kumar</h1>
-        <p>Email: harshkumarm2005@gmail.com | Phone: +91 9625636257 | Location: Delhi</p>
-        
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/harshkumar" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
-            </a>
-            <a href="https://www.instagram.com/okay.harshh" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-            </a>
-        </div>
-        
-        <div class="section">
-            <h2>About Me</h2>
-            <p class="about-text">Just your average nerd who likes to code. If I'm not debugging at 2 AM, you’ll probably find me binging a series or catching up on movies. Love tech, love building cool stuff, and yeah—failed at love, but doing decent at coding!</p>
-        </div>
-        
-        <div class="section">
-            <h2>Skills</h2>
-            <ul class="skills">
-                <li><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Logo"></li>
-                <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo"></li>
-                <li><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo"></li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div onclick="alert('Project 1 Details')">Project 1</div>
-                <div onclick="alert('Project 2 Details')">Project 2</div>
-                <div onclick="alert('Project 3 Details')">Project 3</div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <h1>Harsh Kumar</h1>
+            <p>Email: harshkumarm2005@gmail.com | Phone: +91 9625636257 | Location: Delhi</p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/harshkumar" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.instagram.com/okay.harshh" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
             </div>
+            
+            <div class="section">
+                <h2>About Me</h2>
+                <p style="font-size: 18px;">Just your average nerd who likes to code. If I'm not debugging at 2 AM, you’ll probably find me binging a series or catching up on movies. Love tech, love building cool stuff, and yeah—failed at love, but doing decent at coding!</p>
+            </div>
+
+            <div class="section">
+                <h2>Skills</h2>
+                <ul class="skills">
+                    <li><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Logo"> C</li>
+                    <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo"> Python</li>
+                    <li><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo"> HTML</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Projects</h2>
+                <div class="projects">
+                    <div onclick="alert('Project 1 Details')">Project 1</div>
+                    <div onclick="alert('Project 2 Details')">Project 2</div>
+                    <div onclick="alert('Project 3 Details')">Project 3</div>
+                </div>
+            </div>
+
+            <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
         </div>
     </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+        }
+    </script>
 </body>
 </html>
