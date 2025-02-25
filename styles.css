@@ -1,12 +1,15 @@
+/* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; /* Default dark mode */
+    background-color: #121212;
     color: white;
     display: flex;
     transition: background-color 0.3s, color 0.3s;
 }
+
+/* Sidebar */
 .sidebar {
     width: 250px;
     background: #1c1c1c;
@@ -31,6 +34,8 @@ body {
 .sidebar ul li a:hover {
     color: #007BFF;
 }
+
+/* Main Content */
 .main-content {
     margin-left: 270px;
     padding: 50px;
@@ -45,9 +50,8 @@ body {
     border-radius: 10px;
     text-align: center;
 }
-h1, h2 {
-    color: #fff;
-}
+
+/* Sections */
 .section {
     margin-bottom: 20px;
     padding: 20px;
@@ -59,6 +63,8 @@ h1, h2 {
     font-size: 18px;
     color: white;
 }
+
+/* Skills & Projects */
 .skills, .projects {
     display: flex;
     justify-content: center;
@@ -80,6 +86,8 @@ h1, h2 {
     height: 40px;
     margin-right: 10px;
 }
+
+/* Projects */
 .projects div {
     background: #4CAF50;
     cursor: pointer;
@@ -87,6 +95,8 @@ h1, h2 {
 .projects div:hover {
     background: #388E3C;
 }
+
+/* Theme Toggle */
 .theme-toggle {
     padding: 10px 20px;
     background-color: #007BFF;
@@ -100,6 +110,8 @@ h1, h2 {
 .theme-toggle:hover {
     background-color: #0056b3;
 }
+
+/* Light Mode */
 .light-mode {
     background-color: #ffffff;
     color: #121212;
