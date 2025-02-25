@@ -1,0 +1,126 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Default dark mode */
+    color: white;
+    display: flex;
+    transition: background-color 0.3s, color 0.3s;
+}
+.sidebar {
+    width: 250px;
+    background: #1c1c1c;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    padding: 15px 0;
+}
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+.sidebar ul li a:hover {
+    color: #007BFF;
+}
+.main-content {
+    margin-left: 270px;
+    padding: 50px;
+    width: calc(100% - 270px);
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #1c1c1c;
+    padding: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+h1, h2 {
+    color: #fff;
+}
+.section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #2c2c2c;
+    border-left: 5px solid #007BFF;
+    border-radius: 5px;
+}
+.about-text {
+    font-size: 18px;
+    color: white;
+}
+.skills, .projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+.skills li, .projects div {
+    list-style: none;
+    background: #007BFF;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skills li img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.projects div {
+    background: #4CAF50;
+    cursor: pointer;
+}
+.projects div:hover {
+    background: #388E3C;
+}
+.theme-toggle {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+}
+.theme-toggle:hover {
+    background-color: #0056b3;
+}
+.light-mode {
+    background-color: #ffffff;
+    color: #121212;
+}
+.light-mode .container {
+    background: #f9f9f9;
+}
+.light-mode .sidebar {
+    background: #f1f1f1;
+}
+.light-mode .sidebar ul li a {
+    color: #121212;
+}
+.light-mode .sidebar ul li a:hover {
+    color: #007BFF;
+}
+.light-mode .skills li, .light-mode .projects div {
+    background: #007BFF;
+    color: white;
+}
+.light-mode .skills li:hover, .light-mode .projects div:hover {
+    background: white;
+    color: #007BFF;
+}
