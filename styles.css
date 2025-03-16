@@ -6,6 +6,7 @@ body {
     background-color: #121212;
     color: white;
     display: flex;
+    flex-direction: column;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -33,6 +34,20 @@ body {
 }
 .sidebar ul li a:hover {
     color: #007BFF;
+}
+
+/* Menu Toggle for Mobile */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 /* Main Content */
@@ -64,36 +79,60 @@ body {
     color: white;
 }
 
-/* Skills & Projects */
-.skills, .projects {
+/* Skills */
+.skills {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
 }
-.skills li, .projects div {
+.skills li {
     list-style: none;
     background: #007BFF;
     color: white;
     padding: 12px 20px;
     border-radius: 25px;
     font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
 }
 .skills li img {
     width: 40px;
     height: 40px;
-    margin-right: 10px;
 }
 
-/* Projects */
-.projects div {
-    background: #4CAF50;
-    cursor: pointer;
+/* Hover Effect */
+.skills li:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.5);
+    background: white;
+    color: #007BFF;
 }
-.projects div:hover {
-    background: #388E3C;
+
+/* Projects Section */
+.projects {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+.projects-section {
+    background: green;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s;
+}
+.projects-section:hover {
+    background: #228B22;
+    transform: scale(1.1);
 }
 
 /* Theme Toggle */
@@ -128,11 +167,49 @@ body {
 .light-mode .sidebar ul li a:hover {
     color: #007BFF;
 }
-.light-mode .skills li, .light-mode .projects div {
+.light-mode .skills li {
     background: #007BFF;
     color: white;
 }
-.light-mode .skills li:hover, .light-mode .projects div:hover {
+.light-mode .skills li:hover {
     background: white;
     color: #007BFF;
 }
+.light-mode .projects-section {
+    background: #4CAF50;
+}
+.light-mode .projects-section:hover {
+    background: #2E7D32;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        width: 200px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        position: fixed;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 30px;
+    }
+
+    .projects {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
