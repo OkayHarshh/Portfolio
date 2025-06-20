@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1rem;
+      color: #64748b;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+      transition: 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .project-card p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .tags span {
+      background: #e2e8f0;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #334155;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: 0.2s ease;
+    }
+
+    .btn.repo {
+      background: #e0f2fe;
+      color: #0284c7;
+      border: 1px solid #0284c7;
+    }
+
+    .btn.repo:hover {
+      background: #bae6fd;
+    }
+
+    .btn.live {
+      background: #dcfce7;
+      color: #16a34a;
+      border: 1px solid #16a34a;
+    }
+
+    .btn.live:hover {
+      background: #bbf7d0;
+    }
+  </style>
+</head>
+<body>
+  <div class="projects-container">
+    <h1>🚀 Projects</h1>
+    <p class="subtitle">A selection of my favorite builds.</p>
+
+    <div class="projects-grid">
+
+      <!-- Project Card 1 -->
+      <div class="project-card">
+        <h2>CyberPharma</h2>
+        <p>Ai Based Medicine Recommendation System and Pharmacy.</p>
+        <div class="tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JS</span>
+        </div>
+        <div class="buttons">
+          <a href="https://github.com/OkayHarshh/CyberPharma" target="_blank" class="btn repo">View Repo</a>
+          <a href="https://okayharshh.github.io/CyberPharma/" target="_blank" class="btn live">Live Preview</a>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="project-card">
+        <h2>📊 Portfolio Tracker</h2>
+        <p>Track stocks & crypto in real-time using CoinGecko API and chart visualizations.</p>
+        <div class="tags">
+          <span>React</span>
+          <span>API</span>
+          <span>Chart.js</span>
+        </div>
+        <div class="buttons">
+          <a href="https://github.com/your-portfolio-repo" target="_blank" class="btn repo">View Repo</a>
+          <a href="https://your-tracker.netlify.app" target="_blank" class="btn live">Live Preview</a>
+        </div>
+      </div>
+
+      <!-- Project Card 3 -->
+      <div class="project-card">
+        <h2>🖼️ Image Gallery</h2>
+        <p>Responsive image gallery using JavaScript and Unsplash API with infinite scroll.</p>
+        <div class="tags">
+          <span>JavaScript</span>
+          <span>Unsplash API</span>
+          <span>HTML/CSS</span>
+        </div>
+        <div class="buttons">
+          <a href="https://github.com/your-gallery-repo" target="_blank" class="btn repo">View Repo</a>
+          <a href="https://your-gallery.netlify.app" target="_blank" class="btn live">Live Preview</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+
