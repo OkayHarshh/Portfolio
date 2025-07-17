@@ -1,107 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Kumar | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Harsh Kumar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for dark mode */
+        .dark ::-webkit-scrollbar {
+            width: 12px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1a202c;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 20px;
+            border: 3px solid #1a202c;
+        }
+        /* Custom scrollbar for light mode */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #edf2f7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #a0aec0;
+            border-radius: 20px;
+            border: 3px solid #edf2f7;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .project-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .skill-badge {
+            transition: transform 0.2s ease;
+        }
+        .skill-badge:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
-<body class="light-theme">
-    <div class="main-content">
-        <div class="container">
-            <div class="header">
-                <h1>Harsh Kumar</h1>
-                <p class="contact-info">
-                    <i class="fas fa-envelope"></i> harshkumarm2005@gmail.com | 
-                    <i class="fas fa-phone"></i> +91 9625636257 | 
-                    <i class="fas fa-map-marker-alt"></i> Delhi
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter"></a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="hover:text-indigo-500 transition-colors">About</a>
+                <a href="#skills" class="hover:text-indigo-500 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-indigo-500 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-indigo-500 transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <i data-feather="moon" class="dark-icon"></i>
+                    <i data-feather="sun" class="light-icon hidden"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[70vh] flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4">
+                    <span class="text-gray-500 dark:text-gray-400">Harsh Here</span><br>
+                   
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
+                   Part-time data wrangler, full-time movie critic in my own head. if it’s messy — I fix it. unless it’s my sleep schedule. ☕🧩
                 </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#projects" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg">View My Work</a>
+                    <a href="#contact" class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold px-8 py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-transform transform hover:scale-105 shadow-lg">Get In Touch</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full relative overflow-hidden shadow-2xl">
+                     <img src="ppp.jpeg" alt="Harsh Kumar" class="absolute w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">About Me</h2>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">A little bit about my journey</p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                <img src="https://placehold.co/200x200/667EEA/FFFFFF?text=Profile" alt="Profile Picture" class="w-32 h-32 rounded-full shadow-md flex-shrink-0">
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                   Just your average nerd who likes to code. If I'm not debugging at 2 AM, you'll probably find me binging a series or catching up on movies. Love tech, love building cool stuff, and yeah it didn't work out, but doing decent at coding!
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">My Tech Stack</h2>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">Technologies I love to work with</p>
+            </div>
+            <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4">
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Python</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Pandas</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">NumPy</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Streamlit</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">SQL</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">C++</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">HTML</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">CSS</span>
+                <span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Git & GitHub</span>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">My Projects</h2>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">A selection of my best work</p>
+            </div>
+            
+            <!-- Project Tabs -->
+            <div class="flex justify-center mb-12">
+                <div class="flex space-x-2 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg">
+                    <button class="project-tab-btn active px-6 py-2 rounded-md font-semibold" data-tab="major">Major Projects</button>
+                    <button class="project-tab-btn px-6 py-2 rounded-md font-semibold" data-tab="minor">Minor Projects</button>
+                </div>
             </div>
 
-            <div class="social-links">
-                <a href="https://github.com/OkayHarshh" target="_blank" class="social-btn" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/harsh-kumar-44a22b216/" target="_blank" class="social-btn" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://x.com/okayharshitt" target="_blank" class="social-btn" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-user"></i> About Me</h2>
-                <p class="about-text">
-                    Just your average nerd who likes to code. If I'm not debugging at 2 AM, you'll probably find me binging a series or catching up on movies. Love tech, love building cool stuff, and yeah it didn't work out, but doing decent at coding!
-                </p>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-code"></i> TechStack</h2>
-                <ul class="skills">
-                    <li class="skill-item" onclick="openWiki('C_programming_language')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Logo">
-                        <span>C</span>
-                    </li>
-                    <li class="skill-item" onclick="openWiki('C%2B%2B')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++ Logo">
-                        <span>C++</span>
-                    </li>
-                    <li class="skill-item" onclick="openWiki('Python_(programming_language)')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
-                        <span>Python</span>
-                    </li>
-                    <li class="skill-item" onclick="openWiki('HTML')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML Logo">
-                        <span>HTML</span>
-                    </li>
-                    <li class="skill-item" onclick="openWiki('NumPy')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" alt="NumPy Logo">
-                        <span>NumPy</span>
-                    </li>
-                    <li class="skill-item" onclick="openWiki('Pandas_(software)')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="Pandas Logo">
-                        <span>Pandas</span>
-                    </li>
-                     <li class="skill-item" onclick="openWiki('Streamlit_(software)')">
-                        <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Feoizhpbxvji2hd8jgh2u.png" alt="Streamlit Logo">
-                        <span>Streamlit</span>
-                    </li>
-                    <li class="skill-item" onclick="openWiki('Matplotlib_(software)')">
-                        <img src="https://studyopedia.com/wp-content/uploads/2022/12/Matplotlib-featured-image-studyopedia.png" alt="Matplotlib_Logo">
-                        <span>Matplotlib</span>   
-                    </li>
-                    <li class="skill-item" onclick="openWiki('Seaborn_(software)')">
-                        <img src="https://user-images.githubusercontent.com/315810/92159303-30d41100-edfb-11ea-8107-1c5352202571.png" alt="Seaborn_Logo">
-                        <span>Seaborn</span>   
-                    </li>
-                    
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2><i class="fas fa-project-diagram"></i> Projects</h2>
-                <div class="projects">
-                    <div class="project-card" onclick="window.open('Mini.html', '_blank')">
-                        <h3>Mini Projects</h3>
-                        <p>Small fun projects in Python</p>
+            <!-- Major Projects -->
+            <div id="major-projects" class="project-tab-content grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <img src="image1.png" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Cyber Pharma</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Ai based pharmacy built, using Html,css,&JS.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">React</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">Node.js</span>
+                            <span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://okayharshh.github.io/CyberPharma/" class="text-indigo-500 hover:underline">Live Demo</a>
+                            <a href="https://github.com/OkayHarshh/CyberPharma" class="text-indigo-500 hover:underline">Source Code</a>
+                        </div>
                     </div>
-                    <div class="project-card" onclick="window.open('project.html', '_blank')">
-                        <h3>Major Projects</h3>
-                        <p>Larger-scale coding projects</p>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <img src="image.png" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">FeulMate</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4"> A web application for managing fuel at your convenience.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-2 py-1 rounded-full">Vue.js</span>
+                            <span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-2 py-1 rounded-full">Express</span>
+                            <span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-2 py-1 rounded-full">Socket.io</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://okayharshh.github.io/fuelmate/index.html" class="text-teal-500 hover:underline">Live Demo</a>
+                            <a href="https://github.com/OkayHarshh/fuelmate" class="text-teal-500 hover:underline">Source Code</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <button class="theme-toggle" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i> <span class="theme-text">Dark Mode</span>
-            </button>
-        </div>
-    </div>
+            <!-- Minor Projects -->
+            <div id="minor-projects" class="project-tab-content hidden grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 3 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://i.pinimg.com/1200x/ea/ff/6d/eaff6d2c6a1d1087ff8e665a51067c65.jpg" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Box Office Analysis APP</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A data visualization app for box office analysis, built with python & Streamlit.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Python</span>
+                            <span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Streamlit</span>
+                            
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://boxoffices.streamlit.app/" class="text-orange-500 hover:underline">Live Demo</a>
+                            <a href="https://github.com/OkayHarshh/Box-office-Predictor" class="text-orange-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project Card 4 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://i.pinimg.com/736x/f0/31/26/f031261224c21f684a0abe77b7e57179.jpg" alt="Project 4" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Netflix Data Analyzer</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A data visualization app for Netflix data analysis, built with python & Streamlit.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">JavaScript</span>
+                            <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">HTML</span>
+                            <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">CSS</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://netflixanalyzer.streamlit.app/" class="text-blue-500 hover:underline">Live Demo</a>
+                            <a href="https://github.com/OkayHarshh/Netflix-Data-Analyzer-" class="text-blue-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script src="script.js"></script>
+        <!-- Contact Section -->
+        <section id="contact" class="py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">Get In Touch</h2>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mt-2">I'm currently available for freelance work.</p>
+            </div>
+            <div class="max-w-2xl mx-auto text-center">
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                    Have a project in mind or just want to say hello? My inbox is always open. I'll get back to you as soon as possible!
+                </p>
+                <a href="mailto:harshkumarm2005@gmail.com" class="inline-block bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg">
+    Say Hello
+</a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/OkayHarshh" class="hover:text-indigo-500"><i data-feather="github"></i></a>
+                <a href="https://www.linkedin.com/in/harsh-kumar-44a22b216/" class="hover:text-indigo-500"><i data-feather="linkedin"></i></a>
+                <a href="https://x.com/okayharshitt" class="hover:text-indigo-500"><i data-feather="twitter"></i></a>
+            </div>
+            <p>&copy;</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Feather Icons ---
+        feather.replace();
+
+        // --- Dark Mode Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkIcon = document.querySelector('.dark-icon');
+        const lightIcon = document.querySelector('.light-icon');
+        const html = document.documentElement;
+
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+        } else {
+            html.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDarkMode = html.classList.contains('dark');
+            localStorage.theme = isDarkMode ? 'dark' : 'light';
+            darkIcon.classList.toggle('hidden', isDarkMode);
+            lightIcon.classList.toggle('hidden', !isDarkMode);
+        });
+
+        // --- Project Tabs ---
+        const tabButtons = document.querySelectorAll('.project-tab-btn');
+        const tabContents = document.querySelectorAll('.project-tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Deactivate all buttons and hide all content
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.add('hidden'));
+
+                // Activate the clicked button
+                button.classList.add('active');
+                
+                // Show the corresponding content
+                const tabId = button.dataset.tab;
+                document.getElementById(`${tabId}-projects`).classList.remove('hidden');
+            });
+        });
+
+        // --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Add custom active styles for tabs
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .project-tab-btn.active {
+                background-color: #4f46e5; /* indigo-600 */
+                color: white;
+            }
+            .dark .project-tab-btn.active {
+                background-color: #6366f1; /* indigo-500 */
+            }
+            .fade-in-up {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+    </script>
 </body>
 </html>
