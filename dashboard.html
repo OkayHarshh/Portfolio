@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#0f1117;color:#fff;font-family:Arial,sans-serif}
+.navbar{height:70px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:#171a21;border-bottom:1px solid #2b303b}
+.navbar h1{margin:0;font-size:22px}
+button{cursor:pointer;color:#fff;border:0;border-radius:7px}
+.logout{padding:9px 16px;background:#ef4444}
+.container{max-width:1100px;margin:40px auto;padding:0 25px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+.header h2{margin:0}.add-btn{padding:11px 18px;background:#6366f1;font-size:15px}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.project,.empty{padding:22px;background:#171a21;border:1px solid #2b303b;border-radius:12px}
+.project h3{margin-top:0}.project p{color:#9ca3af;line-height:1.5}
+.project-image{width:100%;height:170px;object-fit:cover;border-radius:9px;margin-bottom:15px;background:#0f1117}
+.badge{display:inline-block;padding:4px 9px;margin:3px;border-radius:999px;background:#252b3a;color:#c7d2fe;font-size:12px}
+.featured{background:#312e81}.actions{display:flex;gap:10px;margin-top:20px}
+.edit{padding:8px 14px;background:#2563eb}.delete{padding:8px 14px;background:#dc2626}
+#status{color:#9ca3af;margin-bottom:20px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);align-items:center;justify-content:center;z-index:1000;padding:20px}
+.modal-box{width:min(600px,100%);max-height:90vh;overflow-y:auto;background:#171a21;padding:30px;border-radius:15px;border:1px solid #2b303b}
+.modal-box h2{margin-top:0}.form-group{margin-bottom:16px}
+.form-group label{display:block;margin-bottom:7px;color:#d1d5db}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px;border-radius:7px;border:1px solid #374151;background:#0f1117;color:#fff;outline:none}
+.form-group textarea{min-height:100px;resize:vertical}
+.checkbox-row{display:flex;align-items:center;gap:9px;margin-top:10px;color:#d1d5db}
+.checkbox-row input{width:auto}.modal-actions{display:flex;gap:10px;margin-top:20px}
+.save-btn,.cancel-btn{padding:10px 18px}.save-btn{background:#6366f1;flex:1}.cancel-btn{background:#374151}
+@media(max-width:600px){.navbar{padding:0 20px}.container{margin:25px auto;padding:0 15px}.header{gap:15px;align-items:flex-start;flex-direction:column}}
+
+.cms-nav{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px;padding:10px;background:#171a21;border:1px solid #2b303b;border-radius:12px}
+.cms-tab{padding:10px 18px;background:#252b3a;color:#d1d5db}
+.cms-tab.active{background:#6366f1;color:#fff}
+.cms-section{display:none}.cms-section.active{display:block}
+.content-card{background:#171a21;border:1px solid #2b303b;border-radius:12px;padding:28px;max-width:800px}
+.content-card h2{margin-top:0}.hint{color:#9ca3af}
+#content-status{min-height:24px;color:#9ca3af;margin-bottom:10px}
+.standalone-save{border:0;cursor:pointer;width:auto}
+.skill-row{display:flex;gap:10px;margin-bottom:10px}
+.skill-row input{flex:1;padding:11px;border-radius:7px;border:1px solid #374151;background:#0f1117;color:#fff}
+.skill-delete{padding:8px 14px;background:#dc2626}
+.skill-add{display:flex;gap:10px;margin:18px 0}
+.skill-add input{flex:1;padding:11px;border-radius:7px;border:1px solid #374151;background:#0f1117;color:#fff}
+</style>
+</head>
+<body>
+<nav class="navbar"><h1>Portfolio Admin</h1><button class="logout" id="logout">Logout</button></nav>
+<main class="container">
+<div class="cms-nav">
+<button class="cms-tab active" data-section="projects">Projects</button>
+<button type="button" class="cms-tab" data-section="hero">Hero</button>
+<button type="button" class="cms-tab" data-section="about">About</button>
+<button type="button" class="cms-tab" data-section="skills">Skills</button>
+<button type="button" class="cms-tab" data-section="contact">Contact</button>
+<button type="button" class="cms-tab" data-section="resume">Resume</button>
+</div>
+<div id="content-status"></div>
+
+<div id="section-projects" class="cms-section active">
+<div class="header"><h2>Projects</h2><button class="add-btn" id="add-project-btn">+ Add Project</button></div>
+<div id="status">Loading projects...</div>
+<div id="projects" class="projects"></div>
+</div>
+
+<div id="section-hero" class="cms-section">
+<div class="content-card">
+<h2>Edit Hero Section</h2>
+<div class="form-group"><label>Name</label><input id="hero-name"></div>
+<div class="form-group"><label>Description</label><textarea id="hero-description"></textarea></div>
+<div class="form-group"><label>Profile Image URL</label><input id="hero-image"></div>
+<button type="button" class="save-btn standalone-save" onclick="saveContent('hero')">Save Hero</button>
+</div></div>
+
+<div id="section-about" class="cms-section">
+<div class="content-card">
+<h2>Edit About Section</h2>
+<div class="form-group"><label>Title</label><input id="about-title"></div>
+<div class="form-group"><label>Subtitle</label><input id="about-subtitle"></div>
+<div class="form-group"><label>Description</label><textarea id="about-description"></textarea></div>
+<div class="form-group"><label>Image URL</label><input id="about-image"></div>
+<button type="button" class="save-btn standalone-save" onclick="saveContent('about')">Save About</button>
+</div></div>
+
+<div id="section-skills" class="cms-section">
+<div class="content-card">
+<h2>Edit Skills</h2>
+<p class="hint">Add, edit or delete skills shown on your portfolio.</p>
+<div id="skills-list"></div>
+<div class="skill-add"><input id="new-skill" placeholder="e.g. PySpark"><button type="button" class="add-btn" onclick="addSkill()">+ Add Skill</button></div>
+<button type="button" class="save-btn standalone-save" onclick="saveContent('skills')">Save Skills</button>
+</div></div>
+
+<div id="section-contact" class="cms-section">
+<div class="content-card">
+<h2>Edit Contact Section</h2>
+<div class="form-group"><label>Title</label><input id="contact-title"></div>
+<div class="form-group"><label>Subtitle</label><input id="contact-subtitle"></div>
+<div class="form-group"><label>Description</label><textarea id="contact-description"></textarea></div>
+<div class="form-group"><label>Email</label><input id="contact-email" type="email"></div>
+<button type="button" class="save-btn standalone-save" onclick="saveContent('contact')">Save Contact</button>
+</div></div>
+
+<div id="section-resume" class="cms-section">
+<div class="content-card">
+<h2>Manage Resume</h2>
+<p class="hint">Upload your latest PDF resume. Visitors will be able to download it from your portfolio.</p>
+<div class="form-group"><label>Select Resume (PDF only)</label><input id="resume-file" type="file" accept="application/pdf,.pdf"></div>
+<button type="button" class="save-btn standalone-save" id="upload-resume-btn" onclick="uploadResume()">Upload Resume</button>
+<div id="resume-status" class="hint" style="margin-top:15px"></div>
+<a id="resume-preview" href="" target="_blank" rel="noopener noreferrer" style="display:none;color:#818cf8;margin-top:10px;display:block">Open Current Resume</a>
+</div></div>
+
+</main>
+
+<div class="modal" id="project-modal">
+<div class="modal-box">
+<h2 id="modal-title">Add New Project</h2>
+<form id="project-form">
+<div class="form-group"><label>Project Name *</label><input id="title" required></div>
+<div class="form-group"><label>Description</label><textarea id="description"></textarea></div>
+<div class="form-group"><label>Tech Stack</label><input id="tech_stack" placeholder="Python, Snowflake, Databricks"></div>
+<div class="form-group"><label>GitHub URL</label><input id="github_url" type="url" placeholder="https://github.com/..."></div>
+<div class="form-group"><label>Live URL</label><input id="live_url" type="url" placeholder="https://..."></div>
+<div class="form-group"><label>Image URL</label><input id="image_url" type="url" placeholder="https://..."></div>
+<div class="form-group"><label>Category</label><select id="category"><option>Data Engineering</option><option>Data Analytics</option><option>Web Development</option><option>AI/ML</option><option>Other</option></select></div>
+<div class="form-group">
+<label for="project_type">Project Type *</label>
+<select id="project_type" required>
+<option value="major">Major Project</option>
+<option value="minor">Minor Project</option>
+</select>
+</div>
+<div class="modal-actions"><button type="submit" class="save-btn" id="save-btn">Add Project</button><button type="button" class="cancel-btn" id="cancel-btn">Cancel</button></div>
+</form>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script>
+const OWNER_ID="67d57da7-b02b-4fa5-bbf8-02e3f25a2bfa";
+const modal=document.getElementById("project-modal");
+const form=document.getElementById("project-form");
+const modalTitle=document.getElementById("modal-title");
+const saveButton=document.getElementById("save-btn");
+let editingProjectId=null;
+
+async function checkOwner(){
+ const {data:{user}}=await supabaseClient.auth.getUser();
+ if(!user){location.href="admin.html";return null}
+ if(user.id!==OWNER_ID){await supabaseClient.auth.signOut();alert("Access denied.");location.href="admin.html";return null}
+ return user;
+}
+function escapeHtml(value){const div=document.createElement("div");div.textContent=value??"";return div.innerHTML}
+
+async function loadProjects(){
+ const {data,error}=await supabaseClient.from("projects").select("*").order("created_at",{ascending:false});
+ const status=document.getElementById("status"),container=document.getElementById("projects");
+ if(error){console.error(error);status.textContent="Error loading projects: "+error.message;return}
+ status.textContent=`${data.length} project(s)`;
+ if(!data.length){container.innerHTML='<div class="empty"><h3>No projects yet</h3><p>Click "+ Add Project" to create your first project.</p></div>';return}
+ container.innerHTML=data.map(p=>{
+  const image=p.image_url?`<img class="project-image" src="${escapeHtml(p.image_url)}" alt="${escapeHtml(p.title)}">`:"";
+  const github=p.github_url?`<a href="${escapeHtml(p.github_url)}" target="_blank" rel="noopener noreferrer">GitHub</a>`:"";
+  const live=p.live_url?`<a href="${escapeHtml(p.live_url)}" target="_blank" rel="noopener noreferrer">Live</a>`:"";
+  return `<div class="project">${image}<h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.description||"")}</p><p><strong>Tech:</strong> ${escapeHtml(p.tech_stack||"-")}</p>${p.category?`<span class="badge">${escapeHtml(p.category)}</span>`:""}${p.featured?'<span class="badge featured">Featured</span>':""}<p>${github}${github&&live?" &nbsp;|&nbsp; ":""}${live}</p><div class="actions"><button class="edit" onclick="editProject(${p.id})">Edit</button><button class="delete" onclick="deleteProject(${p.id})">Delete</button></div></div>`
+ }).join("");
+}
+function openAddModal(){editingProjectId=null;modalTitle.textContent="Add New Project";saveButton.textContent="Add Project";form.reset();modal.style.display="flex"}
+function closeModal(){modal.style.display="none";editingProjectId=null;form.reset()}
+async function editProject(id){
+ const {data,error}=await supabaseClient.from("projects").select("*").eq("id",id).single();
+ if(error){console.error(error);alert("Could not load project: "+error.message);return}
+ editingProjectId=id;modalTitle.textContent="Edit Project";saveButton.textContent="Save Changes";
+ document.getElementById("title").value=data.title||"";
+ document.getElementById("description").value=data.description||"";
+ document.getElementById("tech_stack").value=data.tech_stack||"";
+ document.getElementById("github_url").value=data.github_url||"";
+ document.getElementById("live_url").value=data.live_url||"";
+ document.getElementById("image_url").value=data.image_url||"";
+ document.getElementById("category").value=data.category||"Other";
+ document.getElementById("project_type").value=data.featured?"major":"minor";
+ modal.style.display="flex";
+}
+async function deleteProject(id){
+ if(!confirm("Are you sure you want to permanently delete this project?"))return;
+ const {error}=await supabaseClient.from("projects").delete().eq("id",id);
+ if(error){console.error(error);alert("Could not delete project: "+error.message);return}
+ await loadProjects();
+}
+document.getElementById("add-project-btn").addEventListener("click",openAddModal);
+document.getElementById("cancel-btn").addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+form.addEventListener("submit",async e=>{
+ e.preventDefault();
+ const project={
+  title:document.getElementById("title").value.trim(),
+  description:document.getElementById("description").value.trim(),
+  tech_stack:document.getElementById("tech_stack").value.trim(),
+  github_url:document.getElementById("github_url").value.trim()||null,
+  live_url:document.getElementById("live_url").value.trim()||null,
+  image_url:document.getElementById("image_url").value.trim()||null,
+  category:document.getElementById("category").value,
+  featured:document.getElementById("project_type").value==="major"
+ };
+ saveButton.disabled=true;saveButton.textContent=editingProjectId?"Saving...":"Adding...";
+ let result=editingProjectId
+  ?await supabaseClient.from("projects").update(project).eq("id",editingProjectId)
+  :await supabaseClient.from("projects").insert(project);
+ if(result.error){console.error(result.error);alert("Error: "+result.error.message);saveButton.disabled=false;saveButton.textContent=editingProjectId?"Save Changes":"Add Project";return}
+ closeModal();await loadProjects();saveButton.disabled=false;
+});
+
+let portfolioContent={};
+let skills=[];
+
+async function loadContent(){
+ const {data,error}=await supabaseClient.from("portfolio_content").select("*");
+ if(error){console.error(error);document.getElementById("content-status").textContent="Error: "+error.message;return}
+ portfolioContent={};data.forEach(r=>portfolioContent[r.section]=r.content||{});
+ const h=portfolioContent.hero||{};
+ document.getElementById("hero-name").value=h.name||"";
+ document.getElementById("hero-description").value=h.description||"";
+ document.getElementById("hero-image").value=h.image||"";
+ const a=portfolioContent.about||{};
+ document.getElementById("about-title").value=a.title||"";
+ document.getElementById("about-subtitle").value=a.subtitle||"";
+ document.getElementById("about-description").value=a.description||"";
+ document.getElementById("about-image").value=a.image||"";
+ const c=portfolioContent.contact||{};
+ document.getElementById("contact-title").value=c.title||"";
+ document.getElementById("contact-subtitle").value=c.subtitle||"";
+ document.getElementById("contact-description").value=c.description||"";
+ document.getElementById("contact-email").value=c.email||"";
+ skills=Array.isArray((portfolioContent.skills||{}).items)?[...portfolioContent.skills.items]:[];
+ renderSkills();
+}
+function renderSkills(){
+ const list=document.getElementById("skills-list");
+ list.innerHTML=skills.map((s,i)=>`<div class="skill-row"><input value="${escapeHtml(s)}" data-skill-index="${i}"><button type="button" class="skill-delete" data-delete-index="${i}">Delete</button></div>`).join("");
+ list.querySelectorAll("input[data-skill-index]").forEach(input=>{
+   input.addEventListener("input",()=>{skills[Number(input.dataset.skillIndex)]=input.value;});
+ });
+ list.querySelectorAll("button[data-delete-index]").forEach(btn=>{
+   btn.addEventListener("click",()=>{skills.splice(Number(btn.dataset.deleteIndex),1);renderSkills();});
+ });
+}
+function addSkill(){
+ const x=document.getElementById("new-skill"),v=x.value.trim();if(!v)return;skills.push(v);x.value="";renderSkills();
+}
+function getResumeUrl(){
+ const {data}=supabaseClient.storage.from("resume").getPublicUrl("resume.pdf");
+ return data?.publicUrl ? data.publicUrl + "?v=" + Date.now() : "";
+}
+function loadResumeLink(){
+ const url=getResumeUrl();
+ const link=document.getElementById("resume-preview");
+ if(link&&url){link.href=url;link.style.display="block";}
+}
+async function uploadResume(){
+ const file=document.getElementById("resume-file");
+ const status=document.getElementById("resume-status");
+ const btn=document.getElementById("upload-resume-btn");
+ if(!file.files.length){status.textContent="Please select a PDF first.";return}
+ const selected=file.files[0];
+ if(selected.type!=="application/pdf" && !selected.name.toLowerCase().endsWith(".pdf")){status.textContent="Only PDF files are allowed.";return}
+ if(selected.size>10*1024*1024){status.textContent="Resume must be 10 MB or smaller.";return}
+ btn.disabled=true;btn.textContent="Uploading...";status.textContent="";
+ const {error}=await supabaseClient.storage.from("resume").upload("resume.pdf",selected,{upsert:true,contentType:"application/pdf",cacheControl:"0"});
+ if(error){console.error(error);status.textContent="Upload failed: "+error.message;btn.disabled=false;btn.textContent="Upload Resume";return}
+ status.textContent="Resume uploaded successfully. ✅";
+ file.value="";loadResumeLink();
+ btn.disabled=false;btn.textContent="Upload Resume";
+}
+
+async function saveContent(section){
+ const status=document.getElementById("content-status");
+ status.textContent="Saving...";
+ let content={};
+ if(section==="hero")content={name:document.getElementById("hero-name").value.trim(),description:document.getElementById("hero-description").value.trim(),image:document.getElementById("hero-image").value.trim()};
+ if(section==="about")content={title:document.getElementById("about-title").value.trim(),subtitle:document.getElementById("about-subtitle").value.trim(),description:document.getElementById("about-description").value.trim(),image:document.getElementById("about-image").value.trim()};
+ if(section==="skills"){skills=skills.map(s=>s.trim()).filter(Boolean);content={items:skills};}
+ if(section==="contact")content={title:document.getElementById("contact-title").value.trim(),subtitle:document.getElementById("contact-subtitle").value.trim(),description:document.getElementById("contact-description").value.trim(),email:document.getElementById("contact-email").value.trim()};
+ const {error}=await supabaseClient.from("portfolio_content").upsert({section,content,updated_at:new Date().toISOString()},{onConflict:"section"});
+ if(error){console.error(error);status.textContent="Could not save: "+error.message;alert("Could not save: "+error.message);return}
+ status.textContent=section+" saved successfully.";
+}
+document.querySelectorAll(".cms-tab").forEach(tab=>tab.addEventListener("click",(e)=>{e.preventDefault();
+ document.querySelectorAll(".cms-tab").forEach(t=>t.classList.remove("active"));
+ document.querySelectorAll(".cms-section").forEach(s=>s.classList.remove("active"));
+ tab.classList.add("active");document.getElementById("section-"+tab.dataset.section).classList.add("active");
+ document.getElementById("content-status").textContent="";
+}));
+
+document.getElementById("logout").addEventListener("click",async()=>{await supabaseClient.auth.signOut();location.href="admin.html"});
+(async()=>{const user=await checkOwner();if(user){await loadProjects();await loadContent();loadResumeLink()}})();
+</script>
+</body>
+</html>

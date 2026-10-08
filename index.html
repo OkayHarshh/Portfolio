@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harsh Kumar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for dark mode */
+        .dark ::-webkit-scrollbar {
+            width: 12px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1a202c;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 20px;
+            border: 3px solid #1a202c;
+        }
+        /* Custom scrollbar for light mode */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #edf2f7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #a0aec0;
+            border-radius: 20px;
+            border: 3px solid #edf2f7;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .project-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .skill-badge {
+            transition: transform 0.2s ease;
+        }
+        .skill-badge:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+<!-- Header -->
+<header class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 shadow-md">
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="text-2xl font-bold tracking-tighter" href="#"></a>
+<nav class="hidden md:flex space-x-8 items-center">
+<a class="hover:text-indigo-500 transition-colors" href="#about">About</a>
+<a class="hover:text-indigo-500 transition-colors" href="#skills">Skills</a>
+<a class="hover:text-indigo-500 transition-colors" href="#projects">Projects</a>
+<a class="hover:text-indigo-500 transition-colors" href="#contact">Contact</a>
+<a class="hover:text-indigo-500 transition-colors" href="" id="nav-resume" download="Harsh-Kumar-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+</nav>
+<div class="flex items-center">
+<button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="theme-toggle">
+<i class="dark-icon" data-feather="moon"></i>
+<i class="light-icon hidden" data-feather="sun"></i>
+</button>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-6 pt-32">
+<!-- Hero Section -->
+<section class="min-h-[70vh] flex flex-col md:flex-row items-center justify-between" id="hero">
+<div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+<h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4">
+<span class="text-gray-500 dark:text-gray-400">Harsh Here</span><br/>
+</h1>
+<p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
+                   Part-time data wrangler, full-time movie critic in my own head. if it’s messy — I fix it. unless it’s my sleep schedule. ☕🧩
+                </p>
+<div class="flex justify-center md:justify-start space-x-4">
+<a class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg" href="#projects">View My Work</a>
+<a class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold px-8 py-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-transform transform hover:scale-105 shadow-lg" href="#contact">Get In Touch</a>
+<a class="bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 font-semibold px-8 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-transform transform hover:scale-105 shadow-lg" href="" id="hero-resume" download="Harsh-Kumar-Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+</div>
+</div>
+<div class="md:w-1/2 flex justify-center">
+<div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full relative overflow-hidden shadow-2xl">
+<img alt="Harsh Kumar" class="absolute w-full h-full object-cover" src="images/ppp.jpeg"/>
+</div>
+</div>
+</section>
+<!-- About Me -->
+<section class="py-24" id="about">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold">About Me</h2>
+<p class="text-lg text-gray-500 dark:text-gray-400 mt-2">A little bit about my journey</p>
+</div>
+<div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+<img alt="Profile Picture" class="w-32 h-32 rounded-full shadow-md flex-shrink-0" src="images/FFFFFF"/>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                   Just your average nerd who likes to code. If I'm not debugging at 2 AM, you'll probably find me binging a series or catching up on movies. Love tech, love building cool stuff, and yeah it didn't work out, but doing decent at coding!
+            </p></div>
+</section>
+<!-- Skills Section -->
+<section class="py-24" id="skills">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold">My Tech Stack</h2>
+<p class="text-lg text-gray-500 dark:text-gray-400 mt-2">Technologies I love to work with</p>
+</div>
+<div id="skills-list-public" class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4">
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Python</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Pandas</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">NumPy</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Streamlit</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">SQL</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">C++</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">HTML</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">CSS</span>
+<span class="skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400">Git &amp; GitHub</span>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-24" id="projects">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold">My Projects</h2>
+<p class="text-lg text-gray-500 dark:text-gray-400 mt-2">A selection of my best work</p>
+</div>
+<!-- Project Tabs -->
+<div class="flex justify-center mb-12">
+<div class="flex space-x-2 bg-gray-200 dark:bg-gray-800 p-2 rounded-lg">
+<button class="project-tab-btn active px-6 py-2 rounded-md font-semibold" data-tab="major">Major Projects</button>
+<button class="project-tab-btn px-6 py-2 rounded-md font-semibold" data-tab="minor">Minor Projects</button>
+</div>
+</div>
+<!-- Major Projects -->
+<div class="project-tab-content grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="major-projects">
+<!-- Project Card 1 -->
+<div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+<img alt="Project 1" class="w-full h-48 object-cover" src="images/image1.png"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Cyber Pharma</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Ai based pharmacy built, using Html,css,&amp;JS.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">React</span>
+<span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">Node.js</span>
+<span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">MongoDB</span>
+</div>
+<div class="flex space-x-4">
+<a class="text-indigo-500 hover:underline" href="https://okayharshh.github.io/CyberPharma/">Live Demo</a>
+<a class="text-indigo-500 hover:underline" href="https://github.com/OkayHarshh/CyberPharma">Source Code</a>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+<img alt="Project 2" class="w-full h-48 object-cover" src="images/image.png"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">FeulMate</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4"> A web application for managing fuel at your convenience.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-2 py-1 rounded-full">Vue.js</span>
+<span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-2 py-1 rounded-full">Express</span>
+<span class="text-xs bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 px-2 py-1 rounded-full">Socket.io</span>
+</div>
+<div class="flex space-x-4">
+<a class="text-teal-500 hover:underline" href="https://okayharshh.github.io/fuelmate/index.html">Live Demo</a>
+<a class="text-teal-500 hover:underline" href="https://github.com/OkayHarshh/fuelmate">Source Code</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Minor Projects -->
+<div class="project-tab-content hidden grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="minor-projects">
+<!-- Project Card 3 -->
+<div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+<img alt="Project 3" class="w-full h-48 object-cover" src="images/eaff6d2c6a1d1087ff8e665a51067c65.jpg"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Box Office Analysis APP</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">A data visualization app for box office analysis, built with python &amp; Streamlit.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Python</span>
+<span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Streamlit</span>
+</div>
+<div class="flex space-x-4">
+<a class="text-orange-500 hover:underline" href="https://boxoffices.streamlit.app/">Live Demo</a>
+<a class="text-orange-500 hover:underline" href="https://github.com/OkayHarshh/Box-office-Predictor">Source Code</a>
+</div>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+<img alt="Project 3" class="w-full h-48 object-cover" src="images/26cb84eb869b8638c719e257560faa26.jpg"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">IPL Analysis APP</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">A data visualization app for IPLanalysis, built with python , pandas ,SQL &amp; Streamlit.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Python</span>
+<span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Pandas</span>
+<span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">SQL</span>
+<span class="text-xs bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-2 py-1 rounded-full">Streamlit</span>
+</div>
+<div class="flex space-x-4">
+<a class="text-orange-500 hover:underline" href="https://iplanalyzer.streamlit.app/">Live Demo</a>
+<a class="text-orange-500 hover:underline" href="https://github.com/OkayHarshh/IPL-Analyzer.git">Source Code</a>
+</div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+<img alt="Project 4" class="w-full h-48 object-cover" src="images/f031261224c21f684a0abe77b7e57179.jpg"/>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Netflix Data Analyzer</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">A data visualization app for Netflix data analysis, built with python &amp; Streamlit.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">JavaScript</span>
+<span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">HTML</span>
+<span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-full">CSS</span>
+</div>
+<div class="flex space-x-4">
+<a class="text-blue-500 hover:underline" href="https://netflixanalyzer.streamlit.app/">Live Demo</a>
+<a class="text-blue-500 hover:underline" href="https://github.com/OkayHarshh/Netflix-Data-Analyzer-">Source Code</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24" id="contact">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold">Get In Touch</h2>
+<p class="text-lg text-gray-500 dark:text-gray-400 mt-2">I'm currently available for freelance work.</p>
+</div>
+<div class="max-w-2xl mx-auto text-center">
+<p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                    Have a project in mind or just want to say hello? My inbox is always open. I'll get back to you as soon as possible!
+                </p>
+<a class="inline-block bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg" href="mailto:harshkumarm2005@gmail.com">
+    Say Hello
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-gray-800 py-8">
+<div class="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">
+<div class="flex justify-center space-x-6 mb-4">
+<a class="hover:text-indigo-500" href="https://github.com/OkayHarshh"><i data-feather="github"></i></a>
+<a class="hover:text-indigo-500" href="https://www.linkedin.com/in/harsh-kumar-44a22b216/"><i data-feather="linkedin"></i></a>
+<a class="hover:text-indigo-500" href="https://x.com/okayharshitt"><i data-feather="twitter"></i></a>
+</div>
+<p>©</p>
+</div>
+</footer>
+<script>
+        // --- Feather Icons ---
+        feather.replace();
+
+        // --- Dark Mode Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const darkIcon = document.querySelector('.dark-icon');
+        const lightIcon = document.querySelector('.light-icon');
+        const html = document.documentElement;
+
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+        } else {
+            html.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDarkMode = html.classList.contains('dark');
+            localStorage.theme = isDarkMode ? 'dark' : 'light';
+            darkIcon.classList.toggle('hidden', isDarkMode);
+            lightIcon.classList.toggle('hidden', !isDarkMode);
+        });
+
+        // --- Project Tabs ---
+        const tabButtons = document.querySelectorAll('.project-tab-btn');
+        const tabContents = document.querySelectorAll('.project-tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Deactivate all buttons and hide all content
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.add('hidden'));
+
+                // Activate the clicked button
+                button.classList.add('active');
+                
+                // Show the corresponding content
+                const tabId = button.dataset.tab;
+                document.getElementById(`${tabId}-projects`).classList.remove('hidden');
+            });
+        });
+
+        // --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Add custom active styles for tabs
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .project-tab-btn.active {
+                background-color: #4f46e5; /* indigo-600 */
+                color: white;
+            }
+            .dark .project-tab-btn.active {
+                background-color: #6366f1; /* indigo-500 */
+            }
+            .fade-in-up {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // --- Dynamic Projects from Supabase ---
+        async function loadDynamicProjects() {
+            const majorContainer = document.getElementById('major-projects');
+            const minorContainer = document.getElementById('minor-projects');
+
+            if (!majorContainer || !minorContainer || typeof supabaseClient === 'undefined') {
+                console.error('Supabase client or project containers not found.');
+                return;
+            }
+
+            const { data: projects, error } = await supabaseClient
+                .from('projects')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('Could not load projects:', error);
+                return;
+            }
+
+            if (!projects || projects.length === 0) return;
+
+            const escapeHTML = (value) => {
+                const div = document.createElement('div');
+                div.textContent = value ?? '';
+                return div.innerHTML;
+            };
+
+            const makeCard = (project) => {
+                const image = project.image_url
+                    ? `<img alt="${escapeHTML(project.title)}" class="w-full h-48 object-cover" src="${escapeHTML(project.image_url)}" loading="lazy"/>`
+                    : `<div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">${escapeHTML((project.title || 'Project').charAt(0).toUpperCase())}</div>`;
+
+                const tech = (project.tech_stack || '')
+                    .split(',')
+                    .map(x => x.trim())
+                    .filter(Boolean)
+                    .map(x => `<span class="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">${escapeHTML(x)}</span>`)
+                    .join('');
+
+                const github = project.github_url
+                    ? `<a class="text-indigo-500 hover:underline" href="${escapeHTML(project.github_url)}" target="_blank" rel="noopener noreferrer">Source Code</a>`
+                    : '';
+
+                const live = project.live_url
+                    ? `<a class="text-indigo-500 hover:underline" href="${escapeHTML(project.live_url)}" target="_blank" rel="noopener noreferrer">Live Demo</a>`
+                    : '';
+
+                return `
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                        ${image}
+                        <div class="p-6">
+                            <div class="flex items-start justify-between gap-3 mb-2">
+                                <h3 class="text-xl font-bold">${escapeHTML(project.title)}</h3>
+                                ${project.featured ? '<span class="text-xs bg-indigo-600 text-white px-2 py-1 rounded-full whitespace-nowrap">Featured</span>' : ''}
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">${escapeHTML(project.description || '')}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">${tech}</div>
+                            <div class="flex flex-wrap gap-4">${live}${github}</div>
+                        </div>
+                    </div>`;
+            };
+
+            projects.forEach(project => {
+                const card = makeCard(project);
+
+                // Featured projects go to Major Projects; other projects go to Minor Projects.
+                if (project.featured) {
+                    majorContainer.insertAdjacentHTML('afterbegin', card);
+                } else {
+                    minorContainer.insertAdjacentHTML('afterbegin', card);
+                }
+            });
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script>
+        // ============================================
+        // PORTFOLIO CMS - LOAD CONTENT FROM SUPABASE
+        // ============================================
+
+        function setupResumeLink() {
+            const resumePath = 'resume.pdf';
+            const { data } = supabaseClient.storage.from('resume').getPublicUrl(resumePath);
+            const url = data?.publicUrl ? data.publicUrl + '?v=' + Date.now() : '';
+            ['nav-resume', 'hero-resume'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && url) el.href = url;
+            });
+        }
+
+        async function loadPortfolioContent() {
+            if (typeof supabaseClient === 'undefined') {
+                console.error('Supabase client not found.');
+                return;
+            }
+
+            const { data, error } = await supabaseClient
+                .from('portfolio_content')
+                .select('section, content');
+
+            if (error) {
+                console.error('Could not load portfolio content:', error);
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                console.log('No portfolio content found.');
+                return;
+            }
+
+            const content = {};
+
+            data.forEach(row => {
+                content[row.section] = row.content || {};
+            });
+
+            // ============================================
+            // HERO
+            // ============================================
+
+            if (content.hero) {
+                const heroName = document.querySelector('#hero h1 span');
+                const heroDescription = document.querySelector('#hero p');
+                const heroImage = document.querySelector('#hero img');
+
+                if (heroName && content.hero.name !== undefined) {
+                    heroName.textContent = content.hero.name;
+                }
+
+                if (heroDescription && content.hero.description !== undefined) {
+                    heroDescription.textContent = content.hero.description;
+                }
+
+                if (heroImage && content.hero.image) {
+                    heroImage.src = content.hero.image;
+                }
+            }
+
+            // ============================================
+            // ABOUT
+            // ============================================
+
+            if (content.about) {
+                const aboutTitle = document.querySelector('#about h2');
+                const aboutSubtitle = document.querySelector('#about h2 + p');
+                const aboutDescription = document.querySelector('#about .max-w-4xl p');
+                const aboutImage = document.querySelector('#about img');
+
+                if (aboutTitle && content.about.title !== undefined) {
+                    aboutTitle.textContent = content.about.title;
+                }
+
+                if (aboutSubtitle && content.about.subtitle !== undefined) {
+                    aboutSubtitle.textContent = content.about.subtitle;
+                }
+
+                if (aboutDescription && content.about.description !== undefined) {
+                    aboutDescription.textContent = content.about.description;
+                }
+
+                if (aboutImage && content.about.image) {
+                    aboutImage.src = content.about.image;
+                }
+            }
+
+            // ============================================
+            // SKILLS
+            // ============================================
+
+            if (content.skills !== undefined) {
+                const skillsContainer = document.getElementById('skills-list-public');
+
+                if (skillsContainer) {
+
+                    let skillsData = content.skills;
+                    let skills = [];
+
+                    // Handle:
+                    // { items: [...] }
+                    // { items: "..." }
+                    // [...]
+                    // "Python, SQL, ..."
+                    // JSON strings
+                    if (Array.isArray(skillsData)) {
+                        skills = skillsData;
+                    } else if (skillsData && typeof skillsData === 'object') {
+                        skills = skillsData.items;
+
+                        if (typeof skills === 'string') {
+                            try {
+                                skills = JSON.parse(skills);
+                            } catch (e) {
+                                skills = skills.split(',');
+                            }
+                        }
+
+                        if (!Array.isArray(skills) && skills && typeof skills === 'object') {
+                            skills = Object.values(skills);
+                        }
+                    } else if (typeof skillsData === 'string') {
+                        try {
+                            const parsed = JSON.parse(skillsData);
+                            skills = Array.isArray(parsed)
+                                ? parsed
+                                : (parsed.items || []);
+                        } catch (e) {
+                            skills = skillsData.split(',');
+                        }
+                    }
+
+                    skills = (Array.isArray(skills) ? skills : [])
+                        .map(skill => String(skill).trim())
+                        .filter(Boolean);
+
+                    // Keep the existing HTML skills and only ADD
+                    // skills coming from Supabase. This guarantees
+                    // that the section never becomes blank.
+                    const existingSkills = new Set(
+                        Array.from(
+                            skillsContainer.querySelectorAll('.skill-badge')
+                        ).map(el => el.textContent.trim().toLowerCase())
+                    );
+
+                    skills.forEach(skill => {
+                        const key = skill.toLowerCase();
+
+                        if (existingSkills.has(key)) return;
+
+                        const span = document.createElement('span');
+
+                        span.className =
+                            'skill-badge bg-white dark:bg-gray-800 shadow-md rounded-lg px-4 py-2 font-medium text-indigo-600 dark:text-indigo-400';
+
+                        span.textContent = skill;
+
+                        skillsContainer.appendChild(span);
+                        existingSkills.add(key);
+                    });
+
+                    console.log('Supabase skills:', skills);
+                    console.log(
+                        'Public skills displayed:',
+                        Array.from(
+                            skillsContainer.querySelectorAll('.skill-badge')
+                        ).map(el => el.textContent.trim())
+                    );
+                }
+            }
+
+            // ============================================
+                        // ============================================
+            // CONTACT
+            // ============================================
+
+            if (content.contact) {
+                const contactTitle = document.querySelector('#contact h2');
+                const contactSubtitle = document.querySelector('#contact h2 + p');
+                const contactDescription = document.querySelector('#contact .max-w-2xl p');
+                const contactButton = document.querySelector('#contact .max-w-2xl a');
+
+                if (contactTitle && content.contact.title !== undefined) {
+                    contactTitle.textContent = content.contact.title;
+                }
+
+                if (contactSubtitle && content.contact.subtitle !== undefined) {
+                    contactSubtitle.textContent = content.contact.subtitle;
+                }
+
+                if (contactDescription && content.contact.description !== undefined) {
+                    contactDescription.textContent = content.contact.description;
+                }
+
+                if (contactButton && content.contact.email) {
+                    contactButton.href = 'mailto:' + content.contact.email;
+                }
+            }
+
+            console.log('Portfolio CMS content loaded successfully ✅');
+        }
+
+
+        // ============================================
+        // START SUPABASE LOADERS
+        // ============================================
+
+        setupResumeLink();
+        loadDynamicProjects();
+        loadPortfolioContent();
+    </script>
+</body>
+</html>
